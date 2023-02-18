@@ -1,0 +1,581 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap'); */
+/* @font-face {
+  font-family: "Bickley Script LET Plain";
+  src: url("fonts/bickleys.ttf") format ("ttf");
+  font-weight: lighter;
+  font-style: normal;
+} */
+* {
+  font-family: 'Open Sans', sans-serif;
+  color: #777;
+}
+
+:root {
+  --color: #EF7F1A;
+  --color-text: #777;
+  --color-footer: rgba(249, 233, 68, .75);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.3125rem;
+  overflow-x: hidden;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h2,
+h3 {
+  color: var(--color-text);
+  font-family: 'Dancing Script', cursive;
+  font-weight: 900;
+  line-height: 1;
+}
+
+h2,
+h3,
+p {
+  margin-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  padding: 3rem 0;
+}
+
+.documentation_text {
+  margin: 0 auto;
+  max-width: 85%;
+}
+
+.title-doc {
+  font-size: 1.6em;
+}
+
+.subtitle {
+  font-size: .9em;
+}
+
+.nav ul {
+  margin: 0;
+}
+
+.text {
+  list-style: none;
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  margin: .5rem;
+  color: var(--color);
+}
+
+.brand-title a {
+  color: var(--color);
+  font-size: 2rem;
+  font-family: 'Dancing Script', cursive;
+  text-decoration: none;
+}
+
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-links li {
+  list-style: none;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: var(--color);
+  padding: 1rem;
+  display: block;
+}
+
+.navbar-links li:hover,
+.navbar-links li:focus {
+  text-decoration: overline;
+}
+
+.toggle-button {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--color);
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar-links li {
+    text-align: center;
+  }
+
+  .navbar-links li a {
+    padding: .5rem 1rem;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}
+
+.intro {
+  background-color: rgba(0, 0, 0, .6);
+  background-image: url(../imgs/IMG_0124.jpg);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  color: var(--color);
+  margin: 0 auto;
+  height: 100%;
+}
+
+.container_header {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_title {
+  font-size: 4.2rem;
+  font-weight: 400;
+  font-family: 'Dancing Script', cursive;
+  color: var(--color);
+  line-height: normal;
+}
+
+.section-header {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section_header_image {
+  margin-top: 15%;
+  display: block;
+  max-width: 100%
+}
+
+.chi_sono_testo {
+  line-height: 1.6;
+}
+
+.container {
+  margin-inline: auto;
+  width: 90%;
+  max-width: 70.5rem;
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 50em) {
+  .split {
+    flex-direction: row;
+  }
+
+  .split>* {
+    flex-basis: 100%;
+  }
+
+  .split>*+* {
+    margin-left: 2em;
+  }
+}
+
+/* grid */
+.grid img {
+  /*width: 200px;
+  height: 200px;*/
+  cursor: pointer;
+}
+
+#lightbox {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+#lightbox.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  background-color: black;
+  border: 2px solid white;
+}
+
+.img_box:hover {
+  opacity: .75
+}
+
+@media (min-width: 580px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 15px;
+    height: min(95%, 70rem);
+  }
+}
+
+@media (min-width: 750px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 17px;
+    height: 90vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 230px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 17px;
+    height: 80vh;
+  }
+}
+
+/* start carousel*/
+.carousel {
+  position: relative;
+  height: 300px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.carousel_image {
+  width: 100%;
+  /* height: 100%; */
+  /* ho tolto l'altezza così l'immagine non è strecciata.  */
+  /* object-fit: cover; */
+}
+
+.carousel_track-container {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel_track {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  /* position: relative; */
+  /* height: 100%; */
+  /* transition: transform 250ms ease-in; */
+}
+
+.carousel_slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.carousel_button {
+  position: absolute;
+  top: 50%;
+  /* with top: 50% is not going to the middle but is putting the top of my button to the middle. If i give a height to the button i can see it. The easisest way is to transform: translateY (because its up and down) with a (-50%). It's taking half of it's size (50%) ad moving up  */
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* i'm gonna put my buttons on the inside instead of having them on top of my image */
+.carousel_button--right {
+  right: -45px;
+}
+
+.carousel_button--left {
+  left: -45px;
+}
+
+.carousel_nav {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0;
+}
+
+.carousel_indicator {
+  border: 0;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  margin: 0 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.carousel_indicator.current-slide {
+  background: rgba(0, 0, 0, 0.70);
+}
+
+.is-hidden {
+  display: none;
+}
+
+@media (max-width: 623px) {
+  .carousel {
+    position: relative;
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .carousel_image {
+    width: 100%;
+    /* height: 100%; */
+    /* ho tolto l'altezza così l'immagine non è strecciata.  */
+    /* object-fit: cover; */
+  }
+
+  .carousel_track-container {
+    height: 80%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel_button {
+    position: absolute;
+    top: 40%;
+    /* height: 100px;
+    background-color: red; */
+    /* with top: 50% is not going to the middle but is putting the top of my button to the middle. If i give a height to the button i can see it. The easisest way is to transform: translateY (because its up and down) with a (-50%). It's taking half of it's size (50%) ad moving up  */
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+@media(min-width: 700px) {
+  .carousel {
+    position: relative;
+    height: 400px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .carousel_image {
+    width: 100%;
+    /* height: 100%;
+    object-fit: cover; */
+  }
+
+  .carousel_track-container {
+    height: 85%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel_button {
+    position: absolute;
+    top: 40%;
+    /* height: 100px;
+    background-color: red; */
+    /* with top: 50% is not going to the middle but is putting the top of my button to the middle. If i give a height to the button i can see it. The easisest way is to transform: translateY (because its up and down) with a (-50%). It's taking half of it's size (50%) ad moving up  */
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1000px) {
+  .carousel {
+    position: relative;
+    height: 600px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .carousel_image {
+    width: 100%;
+    /* height: 100%;
+    object-fit: cover; */
+  }
+
+  .carousel_track-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel_button {
+    position: absolute;
+    top: 50%;
+    /* height: 100px;
+    background-color: red; */
+    /* with top: 50% is not going to the middle but is putting the top of my button to the middle. If i give a height to the button i can see it. The easisest way is to transform: translateY (because its up and down) with a (-50%). It's taking half of it's size (50%) ad moving up  */
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+/* end carousel*/
+#contacts {
+  margin-top: 1em;
+}
+
+.orari p {
+  margin-bottom: 0;
+}
+
+.google_maps {
+  width: 100%;
+}
+
+.map_wrapper {
+  max-width: 500px;
+}
+
+.footer {
+  background-color: var(--color-footer);
+  padding: 2em;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.small_title {
+  font-size: 1.675rem;
+}
+
+.small_title a {
+  font-family: 'Dancing Script', cursive;
+  text-decoration: none;
+}
+
+.small_title a:hover {
+  opacity: .75;
+}
+
+.doc {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.doc a {
+  text-decoration: none;
+}
+
+.doc a:hover {
+  opacity: .75;
+}
+
+.footer_nav {
+  margin: 0;
+  padding: 0;
+}
+
+.footer_nav li {
+  list-style-type: none;
+}
+
+#ig:hover {
+  color: var(--color);
+}
+
+/* Documentazione */
+.orange {
+  color: var(--color);
+}
+
+.yellow {
+  color: var(--color-footer);
+}
+
+.yellow:hover {
+  background-color: rgb(164, 170, 164);
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: .75;
+}
