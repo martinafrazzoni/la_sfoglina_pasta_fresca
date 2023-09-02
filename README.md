@@ -41,10 +41,10 @@ I linguaggi web utilizzati per la realizzazione del sito sono: HTML, CSS e Javas
 1. Atom come text editor,
 2. ["Figma"](https://figma.com) per la realizzazione della struttura ad albero e del wireframe,
 3. ["Google Fonts"](https://fonts.google.com/) per i fonts,
-4. ["Fontawesome"]("https://fontawesome.com/")Fontawesome per le icone della sezione contatti e del footer,
-5. ["Favicon"]("https://fontawesome.com/") per l'immagine del logo nel tab del browser,
-6. ["Google Maps"]("https://maps.google.it") per la mappa nella sezione contatti,
-7. ["CorelDRAW"]("https://www.coreldraw.com/it/") per alcuni effetti grafici.
+4. ["Fontawesome"](https://fontawesome.com/)Fontawesome per le icone della sezione contatti e del footer,
+5. ["Favicon"](https://fontawesome.com/) per l'immagine del logo nel tab del browser,
+6. ["Google Maps"](https://maps.google.it) per la mappa nella sezione contatti,
+7. ["CorelDRAW"](https://www.coreldraw.com/it/) per alcuni effetti grafici.
 
 ## Communication Strategy
 A livello comunicativo mi sono concentrata sull'impatto visivo dando importanza agli effetti grafici, alle immagini, e all'interattività. Fondamentale è stata anche un'organizzazione coerente delle informazioni inserite affinchè risultassero evidenti ed intuitive.
