@@ -9,7 +9,7 @@ Il progetto di questo sito nasce per far conoscere in rete La Sfoglina Pasta Fre
 
 La grafica, i colori e i font sono stati scelti riprendendo, in parte, materiale esistente e aggiungendo alcuni particolari effetti affinchè il sito risulti accessibile, fruibile per qualsiasi tipologia di utente, mantenendo un forte impatto visivo. Tutte le immagini utilizzate sono state scattate da me e sono mie personali.
 
-###Benchmarking
+### Benchmarking
 Con questo progetto ho voluto realizzare un sito vetrina che mettesse in luce **la qualità dei prodotti realizzati**, tutti rigorosamente **lavorati a mano** in ogni fase: dall'impasto, passando per la sfoglia tirata col mattarello, al prodotto finito. Gli ingredienti vengono accuratamente scelti per garantire un'esperienza di qualità.
 Il target utente a cui intendo rivolgermi è la clientela dell’attività, che comprende persone di tutte le fasce anagrafiche.
 
@@ -18,7 +18,7 @@ Le Sfogline.it e La Vecchia scuola di cucina bolgnese.
 Il Sito ["Le Sfogline.it"](http://www.lesfogline.it/), intende promuovere sul web un’attività di pasta fresca in Via Belvedere a Bologna, tra i prodotti offerti ci sono: pasta fresca, pasta ripiena, pasta al forno, dolce e salato. Il sito presenta una grafica moderna, accattivante e curata.
 Il secondo competitor, ["La Vecchia Scuola di Cucina Bolognese"](https://www.vsb-bologna.it/it/vsb-bologna), è la Scuola di cucina bolognese della sfoglina Alessandra Spisni, che offre corsi di cucina e degustazioni per divulgare la tradizione e la cultura enogastronomica Bolognese.Il sito risulta meno curato negli aspetti estetici rispetto al primo competitor.
 
-###Look and Feel
+### Look and Feel
 Per quello che riguarda le scelte grafiche, ho ripreso il logo dai biglietti da visita che sono stati realizzati da una tipografia. All'interno del progetto ho usato due font:
 
 Dancing Script (serif), per il titolo principale, il titolo in alto a sinistra e il titoletto nel footer.
@@ -31,11 +31,11 @@ Come colori, ne ho utilizzati tre:
   
 Lo sfondo è bianco per dare una maggiore leggibilità al testo e una sensazione di ampio respiro all'utente che naviga, inoltre conferisce alla pagine un look minimale e d'effetto. Tutte le immagini utilizzate nel progetto sono state scattate usando una macchina fotografica digitale Canon.
 
-###Effetti Particolari
+### Effetti Particolari
 Per rendere interattiva la navigazione della pagina ho utilizzatto alcuni effetti grafici come la lightbox per la sezione "I nostri prodotti" dove ogni foto è cliccabile (pointer ed effetto hover) e può essere ingrandita con un solo click. Ho anche inserito un carosello di immagini, in cui l'utente può interagire sia utilizzando le freccie sia con gli indicatori.
 Per visualizzare corettamente la navbar sugli schermi piccoli ho utilizzato il menù ad hamburger. In generale, per la responsività, ho utilizzato le media queries. Tutti gli effetti sono stati realizzati utilizzando **HTML**, **CSS**, e **Javascript**
 
-###Linguaggi e Strumenti
+### Linguaggi e Strumenti
 I linguaggi web utilizzati per la realizzazione del sito sono: HTML, CSS e Javascript. Come strumenti a supporto della progettazione ho usato:
 
 1. Atom come text editor,
@@ -57,7 +57,7 @@ Contro: essendo un'attività locale e non tanto grande non c'è la possibilità 
 L'obbiettivo del sito resta comunque quello di pubblicizzare online una piccola attività, dove i prodotti sono artigianali, genuini, lavorati a mano come facevano le "sfogline" di una volta. Il progetto vuole valorizzare la professione di sfoglina e l'arte del tirare la pasta col mattarello come facevano le nostre nonne.
 Il target utente si rivolge a persone a cui piace la cucina tradizionale emiliana, ho cercato comunque di rendere il sito intuitivo nella navigazione per non discriminare nessuna fascia d'età.
 
-###Promozione
+### Promozione
 Il sito è stato promosso su Discord
 
 ### Valutazione dei risultati
