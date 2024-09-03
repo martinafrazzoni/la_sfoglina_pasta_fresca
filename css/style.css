@@ -6,14 +6,14 @@
   font-style: normal;
 } */
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Mulish", sans-serif;
   color: #777;
 }
 
 :root {
-  --color: #EF7F1A;
+  --color: #ef7f1a;
   --color-text: #777;
-  --color-footer: rgba(249, 233, 68, .75);
+  --color-footer: rgba(249, 233, 68, 0.75);
 }
 
 *,
@@ -28,8 +28,8 @@ html {
 
 body {
   line-height: 1.6;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
+  font-family: "Mulish", sans-serif;
+  font-weight: 300;
   font-size: 1.3125rem;
   overflow-x: hidden;
 }
@@ -45,7 +45,7 @@ p {
 h2,
 h3 {
   color: var(--color-text);
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-weight: 900;
   line-height: 1;
 }
@@ -74,7 +74,7 @@ section {
 }
 
 .subtitle {
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .nav ul {
@@ -93,16 +93,16 @@ section {
 }
 
 .brand-title {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: 2rem;
-  margin: .5rem;
+  margin: 0.5rem;
   color: var(--color);
 }
 
 .brand-title a {
   color: var(--color);
   font-size: 2rem;
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   text-decoration: none;
 }
 
@@ -130,7 +130,7 @@ section {
 
 .toggle-button {
   position: absolute;
-  top: .75rem;
+  top: 0.75rem;
   right: 1rem;
   display: none;
   flex-direction: column;
@@ -171,7 +171,7 @@ section {
   }
 
   .navbar-links li a {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   .navbar-links.active {
@@ -180,13 +180,15 @@ section {
 }
 
 .intro {
-  background-color: rgba(0, 0, 0, .6);
-  background-image: url(../imgs/IMG_0124.jpg);
+  background-color: rgba(0, 0, 0, 0.6);
+  background-image: url(../imgs/img__hero_webp/IMG_0124.webp);
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
   color: var(--color);
-  margin: 0 auto;
+  /*margin: 0 auto;*/
+  margin: 6px 6px;
+  border-radius: 10px;
   height: 100%;
 }
 
@@ -197,28 +199,54 @@ section {
   align-items: center;
 }
 
+/*media query that controls the container header in small devices*/
+@media (max-width: 900px) {
+  .container_header {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .intro_img {
+    max-height: 100px;
+  }
+
+  .intro_text {
+    margin-left: 1em;
+    margin-right: 1em;
+    align-items: center;
+  }
+
+  h1.main_title {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+}
+
 .main_title {
   font-size: 4.2rem;
   font-weight: 400;
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   color: var(--color);
   line-height: normal;
 }
 
 .section-header {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  font-weight: 400;
+  font-size: 3.125rem;
   text-align: center;
 }
 
 .section_header_image {
-  margin-top: 15%;
   display: block;
-  max-width: 100%
+  max-width: 100%;
+  border-radius: 10px;
 }
 
 .chi_sono_testo {
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: large;
 }
 
 .container {
@@ -230,6 +258,7 @@ section {
 .split {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 50em) {
@@ -237,20 +266,25 @@ section {
     flex-direction: row;
   }
 
-  .split>* {
+  .split > * {
     flex-basis: 100%;
   }
 
-  .split>*+* {
+  .split > * + * {
     margin-left: 2em;
   }
 }
 
 /* grid */
+.grid {
+  margin: 1em;
+}
+
 .grid img {
   /*width: 200px;
   height: 200px;*/
   cursor: pointer;
+  border-radius: 10px 10px;
 }
 
 #lightbox {
@@ -277,7 +311,7 @@ section {
 }
 
 .img_box:hover {
-  opacity: .75
+  opacity: 0.75;
 }
 
 @media (min-width: 580px) {
@@ -323,6 +357,7 @@ section {
 
 .carousel_image {
   width: 100%;
+  border-radius: 10px 10px;
   /* height: 100%; */
   /* ho tolto l'altezza così l'immagine non è strecciata.  */
   /* object-fit: cover; */
@@ -386,23 +421,24 @@ section {
 }
 
 .carousel_indicator.current-slide {
-  background: rgba(0, 0, 0, 0.70);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .is-hidden {
   display: none;
 }
 
-@media (max-width: 623px) {
+@media (max-width: 799px) {
   .carousel {
     position: relative;
-    height: 300px;
-    width: 80%;
+    height: 400px;
+    width: 100%;
     margin: 0 auto;
   }
 
   .carousel_image {
     width: 100%;
+    border-radius: 10px 10px;
     /* height: 100%; */
     /* ho tolto l'altezza così l'immagine non è strecciata.  */
     /* object-fit: cover; */
@@ -427,7 +463,7 @@ section {
   }
 }
 
-@media(min-width: 700px) {
+@media (min-width: 800px) {
   .carousel {
     position: relative;
     height: 400px;
@@ -437,6 +473,7 @@ section {
 
   .carousel_image {
     width: 100%;
+    border-radius: 10px 10px;
     /* height: 100%;
     object-fit: cover; */
   }
@@ -463,13 +500,14 @@ section {
 @media (min-width: 1000px) {
   .carousel {
     position: relative;
-    height: 600px;
+    height: 550px;
     width: 80%;
     margin: 0 auto;
   }
 
   .carousel_image {
     width: 100%;
+    border-radius: 10px 10px;
     /* height: 100%;
     object-fit: cover; */
   }
@@ -494,11 +532,38 @@ section {
 }
 
 /* end carousel*/
+.container_contatti {
+  margin-bottom: 1em;
+}
+
 #contacts {
   margin-top: 1em;
 }
 
+.indirizzo,
+.telefono {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.orari {
+  display: flex;
+  flex-direction: row;
+  align-items: self-start;
+  gap: 10px;
+  padding: 12px;
+}
+
+.indirizzo a,
+.telefono a {
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--color);
+}
 .orari p {
+  font-size: 18px;
   margin-bottom: 0;
 }
 
@@ -512,7 +577,7 @@ section {
 
 .footer {
   background-color: var(--color-footer);
-  padding: 2em;
+  padding: 1em;
   text-align: center;
   margin: 0 auto;
   display: flex;
@@ -524,12 +589,12 @@ section {
 }
 
 .small_title a {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   text-decoration: none;
 }
 
 .small_title a:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .doc {
@@ -543,7 +608,7 @@ section {
 }
 
 .doc a:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .footer_nav {
@@ -577,5 +642,5 @@ section {
 }
 
 .link:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
