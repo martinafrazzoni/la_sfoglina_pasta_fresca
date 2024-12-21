@@ -431,7 +431,7 @@ section {
 @media (max-width: 799px) {
   .carousel {
     position: relative;
-    height: 400px;
+    height: 600px;
     width: 100%;
     margin: 0 auto;
   }
@@ -461,6 +461,10 @@ section {
     background: transparent;
     cursor: pointer;
   }
+  .chi_sono_testo{
+    margin-top: 1em;
+  }
+
 }
 
 @media (min-width: 800px) {
