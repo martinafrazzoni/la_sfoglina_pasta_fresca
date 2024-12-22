@@ -32,12 +32,12 @@ document.querySelectorAll('.navbar-links a').forEach(link => {
   });
 });
 
-//lightbox
+// Updated lightbox code
 const lightbox = document.createElement('div')
 lightbox.id = 'lightbox'
 document.body.appendChild(lightbox)
 
-const images = document.querySelectorAll('img')
+const images = document.querySelectorAll('.grid img')
 images.forEach(image => {
   image.addEventListener('click', e => {
     lightbox.classList.add('active')
@@ -47,12 +47,25 @@ images.forEach(image => {
       lightbox.removeChild(lightbox.firstChild)
     }
     lightbox.appendChild(img)
+    
+    // Prevent body scrolling when lightbox is open
+    document.body.style.overflow = 'hidden'
   })
 })
 
 lightbox.addEventListener('click', e => {
   if (e.target !== e.currentTarget) return
   lightbox.classList.remove('active')
+  // Re-enable scrolling
+  document.body.style.overflow = ''
+})
+
+// Add keyboard support for closing lightbox
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+    lightbox.classList.remove('active')
+    document.body.style.overflow = ''
+  }
 })
 
 // //carousel

@@ -13,8 +13,8 @@
 :root {
   --color: #ef7f1a;
   --color-text: #777;
-  --color-footer: rgba(249, 233, 68, 0.75);
-  --color-bg: rgba(255, 255, 255, 0.95); /* Add this new variable */
+  --color-footer: rgba(239, 127, 26, 0.15); /* Change from yellow to a light orange */
+  --color-bg: rgba(253, 248, 242, 0.95); /* Change from white to warm cream color */
 }
 
 *,
@@ -94,7 +94,6 @@ section {
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--color-bg);
-  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 
 .brand-title {
@@ -193,15 +192,14 @@ section {
   .navbar-links {
     display: none;
     width: 100%;
-    background-color: var(--color-bg);
-    /*border-radius: 8px;*/
+    background-color: var(--color-bg); /* Change from var(--color-bg) to solid white */
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 1000;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-10px);
     transform-origin: top;
     transform: scaleY(0);
@@ -214,6 +212,7 @@ section {
     transform: translateY(0);
     transform: scaleY(1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-bg); /* Ensure solid white background when active */
   }
 
   .navbar-links ul {
@@ -250,7 +249,6 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    /*background-color: rgba(0, 0, 0, 0.2);*/
     z-index: 999;
     opacity: 1;
     visibility: hidden;
@@ -366,51 +364,58 @@ section {
 
 /* grid */
 .grid {
-  margin: 1em;
+  margin: 2em auto;
+  max-width: 1200px; /* Reduced from 1400px */
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .grid img {
-  /*width: 200px;
-  height: 200px;*/
-  cursor: pointer;
-  border-radius: 10px 10px;
-}
-
-#lightbox {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: none;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#lightbox.active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.img_box {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  max-width: 300px; /* Add max-width to limit image size */
+  margin: 0 auto; /* Center images in their grid cells */
+  width: 100%;
 }
 
-#lightbox img {
-  max-width: 90%;
-  max-height: 80%;
-  background-color: var(--color-bg);
-  border: 2px solid white;
+.img_box:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-.img_box:hover {
-  opacity: 0.75;
+.img_box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.img_box:hover::after {
+  opacity: 1;
 }
 
 @media (min-width: 580px) {
   .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(200px, 300px)); /* Set both min and max sizes */
     justify-content: center;
-    align-content: center;
-    gap: 15px;
-    height: min(95%, 70rem);
   }
 
   /* Show all grid items on larger screens */
@@ -426,23 +431,14 @@ section {
 
 @media (min-width: 750px) {
   .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 220px);
-    justify-content: center;
-    align-content: center;
-    grid-gap: 17px;
-    height: 90vh;
+    grid-template-columns: repeat(3, minmax(200px, 280px));
   }
 }
 
 @media (min-width: 1200px) {
   .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 230px);
-    justify-content: center;
-    align-content: center;
-    grid-gap: 17px;
-    height: 80vh;
+    grid-template-columns: repeat(4, minmax(200px, 250px));
+    gap: 1.5rem; /* Reduced gap */
   }
 }
 
@@ -450,7 +446,7 @@ section {
 .carousel {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px; /* Reduced from 1200px */
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -493,13 +489,13 @@ section {
   width: 100%;
   height: 100%;
   opacity: 0;
-  visibility: hidden; /* Add this */
+  visibility: hidden; 
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Update transition */
 }
 
 .carousel_slide.current-slide {
   opacity: 1;
-  visibility: visible; /* Add this */
+  visibility: visible; 
   z-index: 1; /* Add this to ensure current slide is on top */
 }
 
@@ -594,8 +590,8 @@ section {
 @media (min-width: 800px) {
   .carousel {
     position: relative;
-    height: 400px;
-    width: 80%;
+    height: 350px; /* Reduced from 400px */
+    width: 70%; /* Reduced from 80% */
     margin: 0 auto;
   }
 
@@ -628,8 +624,8 @@ section {
 @media (min-width: 1000px) {
   .carousel {
     position: relative;
-    height: 550px;
-    width: 80%;
+    height: 450px; /* Reduced from 550px */
+    width: 65%; /* Reduced from 80% */
     margin: 0 auto;
   }
 
@@ -885,30 +881,68 @@ section {
 
 .load-more-container {
   text-align: center;
-  margin: 2rem auto; /* Changed from 2rem 0 to 2rem auto */
-  width: 100%; /* Added to ensure full width */
-  display: flex; /* Added */
-  justify-content: center; /* Added */
+  margin: 3rem auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .load-more-btn {
   background-color: var(--color);
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
+  padding: 14px 32px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: opacity 0.3s ease;
-  margin: 0 auto; /* Added */
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(239, 127, 26, 0.3);
 }
 
 .load-more-btn:hover {
-  opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 127, 26, 0.4);
+  opacity: 0.9;
+}
+
+.load-more-btn:active {
+  transform: translateY(0);
 }
 
 .about,
 .prodotti,
 .Galleria {
   background-color: var(--color-bg);
+}
+
+#lightbox {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#lightbox.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+#lightbox.active img {
+  transform: scale(1);
 }
