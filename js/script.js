@@ -1,9 +1,36 @@
 // navbar
 const toggleButton = document.getElementsByClassName('toggle-button')[0];
 const navbarLinks = document.getElementsByClassName('navbar-links')[0];
-toggleButton.addEventListener('click', ()=>{
+toggleButton.addEventListener('click', () => {
   navbarLinks.classList.toggle('active');
-})
+  document.querySelector('.navbar').classList.toggle('menu-active');
+  
+  // Prevent body scrolling when menu is open
+  document.body.style.overflow = navbarLinks.classList.contains('active') ? 'hidden' : '';
+  toggleButton.classList.toggle('open');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.navbar') && navbarLinks.classList.contains('active')) {
+    navbarLinks.classList.remove('active');
+    document.querySelector('.navbar').classList.remove('menu-active');
+    document.body.style.overflow = '';
+  }
+});
+
+document.querySelector('.navbar').addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+document.querySelectorAll('.navbar-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navbarLinks.classList.remove('active');
+    document.querySelector('.navbar').classList.remove('menu-active');
+    document.body.style.overflow = '';
+    toggleButton.classList.remove('open');
+  });
+});
 
 //lightbox
 const lightbox = document.createElement('div')
@@ -126,3 +153,49 @@ dotsNav.addEventListener('click', e => {
   updateDots (currentDot, targetDot);
   hideShowArrows(slides, prevButton, nextButton, targetIndex);
 })
+
+// Load More functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const loadMoreBtn = document.getElementById('load-more');
+  const gridItems = document.querySelectorAll('.grid-item.hidden');
+  let currentItems = 4;
+  
+  // Only initialize load more functionality on mobile
+  function initLoadMore() {
+    if (window.innerWidth < 580) {
+      loadMoreBtn.style.display = 'block';
+      gridItems.forEach((item, index) => {
+        if (index >= currentItems) {
+          item.classList.add('hidden');
+        }
+      });
+    } else {
+      loadMoreBtn.style.display = 'none';
+      gridItems.forEach(item => {
+        item.classList.remove('hidden');
+      });
+    }
+  }
+
+  // Initialize on load
+  initLoadMore();
+
+  // Re-initialize on window resize
+  window.addEventListener('resize', initLoadMore);
+  
+  loadMoreBtn.addEventListener('click', function() {
+    if (window.innerWidth < 580) {
+      const itemsToShow = Array.from(gridItems).slice(currentItems - 4, currentItems + 4);
+      
+      itemsToShow.forEach(item => {
+        item.classList.remove('hidden');
+      });
+      
+      currentItems += 4;
+      
+      if (currentItems >= gridItems.length + 4) {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+  });
+});

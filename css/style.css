@@ -14,6 +14,7 @@
   --color: #ef7f1a;
   --color-text: #777;
   --color-footer: rgba(249, 233, 68, 0.75);
+  --color-bg: rgba(255, 255, 255, 0.95); /* Add this new variable */
 }
 
 *,
@@ -32,6 +33,7 @@ body {
   font-weight: 300;
   font-size: 1.3125rem;
   overflow-x: hidden;
+  background-color: var(--color-bg); /* Add this */
 }
 
 body,
@@ -90,6 +92,9 @@ section {
   position: relative;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--color-bg);
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 
 .brand-title {
@@ -106,10 +111,15 @@ section {
   text-decoration: none;
 }
 
+.navbar-links {
+  transition: all 0.3s ease-in-out;
+}
+
 .navbar-links ul {
   margin: 0;
   padding: 0;
   display: flex;
+  gap: 1.5rem;
 }
 
 .navbar-links li {
@@ -119,24 +129,32 @@ section {
 .navbar-links li a {
   text-decoration: none;
   color: var(--color);
-  padding: 1rem;
-  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border-radius: 25px;
 }
 
-.navbar-links li:hover,
-.navbar-links li:focus {
-  text-decoration: overline;
+.navbar-links li a:hover,
+.navbar-links li a:focus {
+  background-color: var(--color);
+  color: white;
+  text-decoration: none;
 }
 
 .toggle-button {
   position: absolute;
-  top: 0.75rem;
   right: 1rem;
   display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
   height: 21px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .toggle-button .bar {
@@ -144,6 +162,21 @@ section {
   width: 100%;
   background-color: var(--color);
   border-radius: 10px;
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.toggle-button.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(0px, -2px);
+}
+
+.toggle-button.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.toggle-button.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(-1px, 2px);
 }
 
 @media (max-width: 900px) {
@@ -151,44 +184,99 @@ section {
     display: flex;
   }
 
+  .navbar {
+    padding: 1rem;
+    margin: 0; /* Remove extra margin */
+    box-shadow: none;
+  }
+
   .navbar-links {
     display: none;
     width: 100%;
+    background-color: var(--color-bg);
+    /*border-radius: 8px;*/
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   }
 
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+  .navbar-links.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    transform: scaleY(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .navbar-links ul {
     width: 100%;
     flex-direction: column;
+    gap: 1rem;
   }
 
   .navbar-links li {
     text-align: center;
+    width: 100%;
   }
 
   .navbar-links li a {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: all 0.2s ease;
   }
 
-  .navbar-links.active {
-    display: flex;
+  .navbar-links li a:hover {
+    background-color: var(--color);
+    color: white;
+    transform: translateX(5px);
+  }
+
+  .navbar::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+    z-index: 999;
+    opacity: 1;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .navbar.menu-active::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .toggle-button {
+    margin-right: 0.5rem;
   }
 }
 
 .intro {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   background-image: url(../imgs/img__hero_webp/IMG_0124.webp);
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
   color: var(--color);
   /*margin: 0 auto;*/
-  margin: 6px 6px;
-  border-radius: 10px;
+  /*margin: 6px 6px;*/
+  /*border-radius: 10px;*/
   height: 100%;
 }
 
@@ -253,6 +341,7 @@ section {
   margin-inline: auto;
   width: 90%;
   max-width: 70.5rem;
+  background-color: var(--color-bg);
 }
 
 .split {
@@ -306,7 +395,7 @@ section {
 #lightbox img {
   max-width: 90%;
   max-height: 80%;
-  background-color: black;
+  background-color: var(--color-bg);
   border: 2px solid white;
 }
 
@@ -322,6 +411,16 @@ section {
     align-content: center;
     gap: 15px;
     height: min(95%, 70rem);
+  }
+
+  /* Show all grid items on larger screens */
+  .grid-item.hidden {
+    display: block;
+  }
+
+  /* Hide load more button on larger screens */
+  .load-more-container {
+    display: none;
   }
 }
 
@@ -350,52 +449,73 @@ section {
 /* start carousel*/
 .carousel {
   position: relative;
-  height: 300px;
-  width: 80%;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 .carousel_image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  border-radius: 10px 10px;
-  /* height: 100%; */
-  /* ho tolto l'altezza così l'immagine non è strecciata.  */
-  /* object-fit: cover; */
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .carousel_track-container {
-  height: 100%;
   position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.67%; /* 3:2 aspect ratio */
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .carousel_track {
-  padding: 0;
-  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   list-style: none;
-  /* position: relative; */
-  /* height: 100%; */
-  /* transition: transform 250ms ease-in; */
+  margin: 0;
+  padding: 0;
+  transition: transform 0.3s ease-in-out;
 }
 
 .carousel_slide {
   position: absolute;
   top: 0;
-  bottom: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden; /* Add this */
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Update transition */
+}
+
+.carousel_slide.current-slide {
+  opacity: 1;
+  visibility: visible; /* Add this */
+  z-index: 1; /* Add this to ensure current slide is on top */
 }
 
 .carousel_button {
   position: absolute;
   top: 50%;
-  /* with top: 50% is not going to the middle but is putting the top of my button to the middle. If i give a height to the button i can see it. The easisest way is to transform: translateY (because its up and down) with a (-50%). It's taking half of it's size (50%) ad moving up  */
   transform: translateY(-50%);
-  border: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 8px 16px;
   cursor: pointer;
+  z-index: 2; /* Increased z-index */
+  color: white;
+  border-radius: 4px;
 }
 
-/* i'm gonna put my buttons on the inside instead of having them on top of my image */
 .carousel_button--right {
   right: -45px;
 }
@@ -407,21 +527,25 @@ section {
 .carousel_nav {
   display: flex;
   justify-content: center;
-  padding: 25px 0;
+  align-items: center;
+  padding: 15px 0;
+  margin: 10px 0;
+  gap: 10px;
 }
 
 .carousel_indicator {
+  width: 12px;
+  height: 12px;
+  padding: 0;
   border: 0;
   border-radius: 50%;
-  width: 13px;
-  height: 13px;
-  margin: 0 10px;
   background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .carousel_indicator.current-slide {
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .is-hidden {
@@ -431,8 +555,8 @@ section {
 @media (max-width: 799px) {
   .carousel {
     position: relative;
-    height: 600px;
-    width: 100%;
+    /*height: 600px;*/
+    width: 80vw; 
     margin: 0 auto;
   }
 
@@ -533,6 +657,62 @@ section {
     background: transparent;
     cursor: pointer;
   }
+
+}
+
+@media screen and (max-width: 768px) {
+  .carousel_track-container {
+    padding-bottom: 75%; /* 4:3 aspect ratio for mobile */
+  }
+
+  .carousel_nav {
+    gap: 8px;
+    padding: 10px 0;
+  }
+
+  .carousel_indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  .carousel_button {
+    top: calc(50% - 20px); /* Adjust vertical position */
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 40px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel_button--left {
+    left: 10px;
+  }
+
+  .carousel_button--right {
+    right: 10px;
+  }
+
+  /* Make arrows more visible */
+  .carousel_button i {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carousel_track-container {
+    padding-bottom: 75%; /* 4:3 aspect ratio for mobile */
+  }
+  
+  .carousel_button {
+    padding: 4px 8px;
+  }
+  
+  .carousel_indicator {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 /* end carousel*/
@@ -541,7 +721,8 @@ section {
 }
 
 #contacts {
-  margin-top: 1em;
+  margin-top: 3em; /* Increase top margin */
+  padding-top: 1rem; /* Add padding to prevent margin collapse */
 }
 
 .indirizzo,
@@ -564,7 +745,6 @@ section {
 .telefono a {
   font-size: 18px;
   text-decoration: none;
-  color: var(--color);
 }
 .orari p {
   font-size: 18px;
@@ -572,11 +752,61 @@ section {
 }
 
 .google_maps {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .map_wrapper {
-  max-width: 500px;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .map_wrapper {
+    padding-bottom: 125%; /* Taller aspect ratio for mobile */
+    max-width: 100%;
+  }
+  
+  .container_contatti {
+    margin: 0 1rem 3rem; /* Added bottom margin */
+  }
+  
+  .second_col {
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 2rem; /* Added bottom margin */
+  }
+}
+
+@media (max-width: 768px) {
+  #contacts {
+    margin-top: 1em;
+    padding-top: 0.5rem;
+  }
+  
+  .map_wrapper {
+    padding-bottom: 100%; /* Square aspect ratio for mobile */
+    max-width: 100%; /* Full width on mobile */
+  }
+  
+  .container_contatti {
+    margin: 0 1rem;
+  }
+  
+  .second_col {
+    width: 100%; /* Ensure full width on mobile */
+    padding: 0 1rem; /* Add some padding */
+  }
 }
 
 .footer {
@@ -647,4 +877,38 @@ section {
 
 .link:hover {
   opacity: 0.75;
+}
+
+.hidden {
+  display: none;
+}
+
+.load-more-container {
+  text-align: center;
+  margin: 2rem auto; /* Changed from 2rem 0 to 2rem auto */
+  width: 100%; /* Added to ensure full width */
+  display: flex; /* Added */
+  justify-content: center; /* Added */
+}
+
+.load-more-btn {
+  background-color: var(--color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+  margin: 0 auto; /* Added */
+}
+
+.load-more-btn:hover {
+  opacity: 0.8;
+}
+
+.about,
+.prodotti,
+.Galleria {
+  background-color: var(--color-bg);
 }
